@@ -1,0 +1,146 @@
+[
+  {
+    "slug": "AWS-Terraform-Workshop",
+    "name": "AWS Terraform Workshop",
+    "description": "Beginner-friendly guide to setting up AWS infrastructure using Terraform.",
+    "technologies": ["AWS", "Terraform"],
+    "code": "https://github.com/NotHarshhaa/AWS-Terraform-Workshop",
+    "publishedAt": "2024-01-10",
+    "type": "personal"
+  },
+  {
+    "slug": "tf-ecr-ecs-gh-deploy",
+    "name": "Terraform ECR ECS GitHub Deploy",
+    "description": "Automated deployment of a Python application to AWS ECS using GitHub Actions, Docker, and Terraform.",
+    "technologies": ["Terraform", "ECR", "ECS", "GitHub Actions", "Docker"],
+    "code": "https://github.com/NotHarshhaa/tf-ecr-ecs-gh-deploy",
+    "publishedAt": "2024-01-15",
+    "type": "personal"
+  },
+  {
+    "slug": "eks-cluster-terraform",
+    "name": "EKS Cluster Terraform",
+    "description": "Terraform-based provisioning of an Amazon EKS Cluster for Kubernetes deployments.",
+    "technologies": ["Terraform", "AWS", "EKS"],
+    "code": "https://github.com/NotHarshhaa/eks-cluster-terraform",
+    "publishedAt": "2024-01-20",
+    "type": "personal"
+  },
+  {
+    "slug": "CI-CD_EKS-GitHub_Actions",
+    "name": "CI/CD EKS GitHub Actions",
+    "description": "CI/CD pipeline for deploying a Node.js app on Amazon EKS using GitHub Actions, Terraform, and Kubernetes.",
+    "technologies": ["CI/CD", "EKS", "GitHub Actions", "Terraform", "Kubernetes"],
+    "code": "https://github.com/NotHarshhaa/CI-CD_EKS-GitHub_Actions",
+    "publishedAt": "2024-02-01",
+    "type": "personal"
+  },
+  {
+    "slug": "devops-tools",
+    "name": "DevOps Tools",
+    "description": "Collection of essential DevOps tools for development, deployment, monitoring, security, and automation.",
+    "technologies": ["DevOps", "Security", "Automation"],
+    "code": "https://github.com/NotHarshhaa/devops-tools",
+    "publishedAt": "2024-02-10",
+    "type": "personal"
+  },
+  {
+    "slug": "Certified_Kubernetes_Administrator",
+    "name": "Certified Kubernetes Administrator",
+    "description": "Master Kubernetes from scratch and prepare for the CKA certification.",
+    "technologies": ["Kubernetes", "CKA"],
+    "code": "https://github.com/NotHarshhaa/Certified_Kubernetes_Administrator",
+    "publishedAt": "2024-02-15",
+    "type": "personal"
+  },
+  {
+    "slug": "kubernetes-dashboard",
+    "name": "Kubernetes Dashboard",
+    "description": "Kubernetes dashboard with integrated health checks and Trivy scanning.",
+    "technologies": ["Kubernetes", "Dashboard", "Security"],
+    "code": "https://github.com/NotHarshhaa/kubernetes-dashboard",
+    "publishedAt": "2024-02-20",
+    "type": "personal"
+  },
+  {
+    "slug": "DevOps-Projects",
+    "name": "DevOps Projects",
+    "description": "Real-world DevOps projects from beginner to advanced levels.",
+    "technologies": ["DevOps", "Cloud"],
+    "code": "https://github.com/NotHarshhaa/DevOps-Projects",
+    "publishedAt": "2024-03-01",
+    "type": "personal"
+  },
+  {
+    "slug": "uber-clone",
+    "name": "Uber Clone",
+    "description": "Full-stack Uber-like transportation application with DevSecOps integration.",
+    "technologies": ["Full-Stack", "DevSecOps"],
+    "code": "https://github.com/NotHarshhaa/uber-clone",
+    "publishedAt": "2024-03-10",
+    "type": "personal"
+  },
+  {
+    "slug": "kubernetes-projects-learning",
+    "name": "Kubernetes Projects Learning",
+    "description": "Practical Kubernetes projects to master deployment, management, and scaling of containerized applications.",
+    "technologies": ["Kubernetes", "Projects"],
+    "code": "https://github.com/NotHarshhaa/kubernetes-projects-learning",
+    "publishedAt": "2024-03-15",
+    "type": "personal"
+  },
+  {
+    "slug": "AWS-EKS_Terraform",
+    "name": "AWS EKS Terraform",
+    "description": "Provision Amazon EKS Cluster on AWS using Terraform.",
+    "technologies": ["AWS", "EKS", "Terraform"],
+    "code": "https://github.com/NotHarshhaa/AWS-EKS_Terraform",
+    "publishedAt": "2024-03-18",
+    "type": "personal"
+  },
+  {
+    "slug": "aws-billing-alert-terraform",
+    "name": "AWS Billing Alert Terraform",
+    "description": "Terraform module for setting up AWS billing alerts.",
+    "technologies": ["AWS", "Terraform", "Billing"],
+    "code": "https://github.com/NotHarshhaa/aws-billing-alert-terraform",
+    "publishedAt": "2024-03-20",
+    "type": "personal"
+  },
+  {
+    "slug": "AWS-DevOps_Real-Time_Deployment",
+    "name": "AWS DevOps Real-Time Deployment",
+    "description": "End-to-end AWS DevOps deployment pipeline from Dev to Production.",
+    "technologies": ["AWS", "DevOps", "CI/CD"],
+    "code": "https://github.com/NotHarshhaa/AWS-DevOps_Real-Time_Deployment",
+    "publishedAt": "2024-03-22",
+    "type": "personal"
+  },
+  {
+    "slug": "devops-cheatsheet",
+    "name": "DevOps Cheatsheet",
+    "description": "Quick-reference DevOps cheatsheets covering CI/CD, cloud, security, monitoring, and automation.",
+    "technologies": ["DevOps", "Cheatsheet", "Cloud"],
+    "code": "https://github.com/NotHarshhaa/devops-cheatsheet",
+    "publishedAt": "2024-03-25",
+    "type": "personal"
+  },
+  {
+    "slug": "DevOps-Interview-Questions",
+    "name": "DevOps Interview Questions",
+    "description": "550+ DevOps interview questions with detailed answers covering CI/CD, Kubernetes, Terraform, and cloud.",
+    "technologies": ["DevOps", "Interview", "CI/CD"],
+    "code": "https://github.com/NotHarshhaa/DevOps-Interview-Questions",
+    "publishedAt": "2024-03-30",
+    "type": "personal"
+  },
+  {
+    "slug": "into-the-devops",
+    "name": "Into the DevOps",
+    "description": "Comprehensive DevOps interview guide covering Linux, AWS, Kubernetes, Terraform, Docker, and more.",
+    "technologies": ["DevOps", "Interview", "Cloud"],
+    "code": "https://github.com/NotHarshhaa/into-the-devops",
+    "publishedAt": "2024-04-01",
+    "type": "personal"
+  }
+]
