@@ -157,6 +157,7 @@ export const Authors = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'data',
   documentTypes: [Blog, Authors],
+  // Removed 'exclude' property as it is not supported
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
