@@ -109,6 +109,7 @@ export const Blog = defineDocumentType(() => ({
     layout: { type: 'string' },
     bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
+    objective: { type: 'string', required: false },
     // Tambahkan field baru di sini
     tujuan: { type: 'string' }, // Field tujuan sebagai string
     tone: { type: 'list', of: { type: 'string' }, default: [] }, // Field tone sebagai list of strings

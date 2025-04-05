@@ -274,7 +274,7 @@ journalctl -u prometheus -f --no-pager
 - Now we can try to access it via the browser. I'm going to be using the IP address of the Ubuntu server. You need to append port 9090 to the IP.
 
 ```bash
-<public-ip:9090>
+public-ip:9090
 ```
 
 - If you go to targets, you should see only one - Prometheus target. It scrapes itself every 15 seconds by default.
@@ -548,7 +548,7 @@ post {
 ## Step 8 : Create a Pipeline Project in Jenkins using a Declarative Pipeline
 
 - Configure Sonar Server in Manage Jenkins
-- Grab the Public IP Address of your EC2 Instance, Sonarqube works on Port 9000, so <Public IP>:9000.</Public> Goto your Sonarqube Server. Click on Administration → Security → Users → Click on Tokens and Update Token → Give it a name → and click on Generate Token
+- Grab the Public IP Address of your EC2 Instance, Sonarqube works on Port 9000, so `Public IP:9000`. Goto your Sonarqube Server. Click on Administration → Security → Users → Click on Tokens and Update Token → Give it a name → and click on Generate Token
 - click on update Token
 - Create a token with a name and generate
 - copy Token
@@ -919,7 +919,7 @@ kubectl get svc #use anyone
 ## Step 12: Kubernetes master and slave setup on Ubuntu (20.04)
 
 - Access from a Web browser with
-- `<public-ip-of-slave:service port>`
+- `public-ip-of-slave:service port`
 
 ## Step 13: Access the Netflix app on the Browser
 
