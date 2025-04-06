@@ -13,8 +13,13 @@ import * as React from 'react';
 export default function DrawerNav() {
   return (
     <Drawer.Root direction="right">
-      <Drawer.Trigger>
-        <Button variant="outline" size="icon" className="sm:hidden w-9 h-9">
+      <Drawer.Trigger asChild>
+        <Button
+          asChild
+          variant="outline"
+          size="icon"
+          className="sm:hidden w-9 h-9"
+        >
           <AlignJustify />
         </Button>
       </Drawer.Trigger>
