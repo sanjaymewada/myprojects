@@ -11,13 +11,13 @@ import Link from 'next/link'
 
 const POSTS_PER_PAGE = 6
 
-interface PageProps {
+type Props = {
   params: {
     page: string
   }
 }
 
-export default function Page({ params }: PageProps) {
+export default function Page({ params }: Props) {
   const posts = allCoreContent(sortPosts(allBlogs))
   const pageNumber = parseInt(params.page)
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)

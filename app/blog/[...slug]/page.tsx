@@ -21,13 +21,13 @@ const layouts = {
   PostBanner,
 }
 
-interface PageProps {
+type Props = {
   params: {
     slug: string[]
   }
 }
 
-export default function Page({ params }: PageProps) {
+export default function Page({ params }: Props) {
   const slug = decodeURI(params.slug.join('/'))
   const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
