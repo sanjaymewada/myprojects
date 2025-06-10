@@ -52,42 +52,81 @@ export default function Page() {
 
   return (
     <div>
-      {/* Bagian Hero */}
-      <div className="h-[calc(100vh-14rem)] flex flex-col justify-center items-center">
-        <Button variant="outline" className="rounded-full mb-6">
-          <Link href="/projects">
-          Explore More DevOps Resources
-          </Link>
-        </Button>
-        <h1 className="mb-2 text-5xl md:text-5xl lg:text-6xl font-semibold tracking-tighter text-center">
-          ProDevOpsGuy Tech Community
-        </h1>
-        {startAnimation && (
-          <div className="text-center py-2 mb-4">
-            <Typewriter
-              options={{
-                strings: [
-                  "Cloud DevOps Engineer",
-                  "Content Creator/Blogger",
-                  "Automation Expert"
-                ],
-                autoStart: true,
-                loop: true,
-                wrapperClassName: "text-xl sm:text-2xl font-medium",
-                cursorClassName: "text-blue-500 dark:text-blue-500",
-                delay: 50, // Kecepatan pengetikan
-                deleteSpeed: 20, // Kecepatan penghapusan
-              }}
-            />
-          </div>
-        )}
-        {/* <p className="mx-auto max-w-sm sm:max-w-md mb-4 text-center font-medium sm:text-xl">
-          I was a Data Science student at the number 1 best Polytechnic in Southeast Asia.
-        </p> */}
-        <div className="flex justify-center">
-          <PulsatingButton>
-            <Link href="/blog">Explore All Projects</Link>
-          </PulsatingButton>
+      {/* Hero Section with Creative Design */}
+      <div className="relative h-[calc(100vh-14rem)] overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 from-blue-500/10 to-purple-500/10 dark:from-blue-900/20 dark:to-purple-900/20">
+          <div className="absolute inset-0 bg-grid-pattern opacity-10 animate-grid"></div>
+        </div>
+
+        {/* Main Content */}
+        <div className="relative h-full flex flex-col justify-center items-center px-4">
+          {/* Floating Badge */}
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <Button 
+              variant="outline" 
+              className="rounded-full backdrop-blur-sm border-2 border-blue-500/20 dark:border-blue-400/20 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-300"
+            >
+              <Link href="/projects" className="flex items-center gap-2">
+                <span className="animate-pulse w-2 h-2 rounded-full bg-blue-500"></span>
+                Explore More DevOps Resources
+              </Link>
+            </Button>
+          </motion.div>
+
+          {/* Title with Gradient */}
+          <motion.h1 
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.7 }}
+            className="mb-6 text-5xl md:text-6xl lg:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400"
+          >
+            ProDevOpsGuy Tech Community
+          </motion.h1>
+
+          {/* Animated Typewriter */}
+          {startAnimation && (
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="text-center py-4 mb-8 backdrop-blur-sm bg-white/5 dark:bg-black/5 rounded-xl px-6"
+            >
+              <Typewriter
+                options={{
+                  strings: [
+                    "Cloud DevOps Engineer",
+                    "Content Creator/Blogger",
+                    "Automation Expert"
+                  ],
+                  autoStart: true,
+                  loop: true,
+                  wrapperClassName: "text-2xl sm:text-3xl font-medium bg-gradient-to-r from-blue-500 to-purple-500 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent",
+                  cursorClassName: "text-purple-500 dark:text-purple-400",
+                  delay: 50,
+                  deleteSpeed: 20,
+                }}
+              />
+            </motion.div>
+          )}
+
+          {/* Action Button */}
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="relative"
+          >
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <PulsatingButton className="relative">
+              <Link href="/blog" className="px-8 py-3">Explore All Projects</Link>
+            </PulsatingButton>
+          </motion.div>
         </div>
       </div>
 
