@@ -11,7 +11,13 @@ import Link from 'next/link'
 
 const POSTS_PER_PAGE = 6
 
-export default function Page({ params }: { params: { page: string } }) {
+interface PageProps {
+  params: {
+    page: string
+  }
+}
+
+export default function Page({ params }: PageProps) {
   const posts = allCoreContent(sortPosts(allBlogs))
   const pageNumber = parseInt(params.page)
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
@@ -42,24 +48,14 @@ export default function Page({ params }: { params: { page: string } }) {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center gap-4"
         >
-          <div className="flex flex-col gap-2">
-            <motion.h1
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
-            >
-              All Projects
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-sm text-gray-600 dark:text-gray-400"
-            >
-              Page {pageNumber} of {totalPages}
-            </motion.p>
-          </div>
+          <motion.h1
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
+          >
+            All Projects
+          </motion.h1>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -73,6 +69,14 @@ export default function Page({ params }: { params: { page: string } }) {
             </Button>
           </motion.div>
         </motion.div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="text-lg leading-7 text-gray-500 dark:text-gray-400"
+        >
+          Discover our latest DevOps projects, tutorials, and technical guides
+        </motion.p>
       </div>
 
       <motion.div

@@ -21,7 +21,13 @@ const layouts = {
   PostBanner,
 }
 
-export default function Page({ params }: { params: { slug: string[] } }) {
+interface PageProps {
+  params: {
+    slug: string[]
+  }
+}
+
+export default function Page({ params }: PageProps) {
   const slug = decodeURI(params.slug.join('/'))
   const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
