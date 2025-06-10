@@ -3,64 +3,139 @@
 import { Drawer } from 'vaul';
 import Link from './Link';
 import headerNavLinks from '@/data/headerNavLinks';
-import { AlignJustify, X } from 'lucide-react';
+import { AlignJustify, X, ChevronRight } from 'lucide-react';
 import { Button } from './components/ui/button';
 import MusicPlayer from './music-player';
 import { Separator } from './components/ui/separator';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function DrawerNav() {
+  const pathname = usePathname();
+
   return (
     <Drawer.Root direction="right">
       <Drawer.Trigger asChild>
         <Button
-          asChild
-          variant="outline"
+          variant="ghost"
           size="icon"
-          className="sm:hidden w-9 h-9"
+          className="sm:hidden w-9 h-9 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
         >
-          <AlignJustify />
+          <motion.div
+            whileHover={{ rotate: 180 }}
+            transition={{ duration: 0.3 }}
+          >
+            <AlignJustify className="w-5 h-5" />
+          </motion.div>
         </Button>
       </Drawer.Trigger>
-      <Drawer.Portal>
-        <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-        <Drawer.Content
-          className="right-2 top-2 bottom-2 fixed z-10 outline-none w-[310px] flex"
-          style={{ '--initial-transform': 'calc(100% + 8px)' } as React.CSSProperties}
-        >
-          <div className="bg-white dark:bg-zinc-900 h-full w-full pt-4 px-4 flex flex-col rounded-[16px]">
-            <div className="flex justify-between items-center border-b pb-1">
-              <span className="text-2xl pt-2 font-bold tracking-widest text-gray-900 dark:text-gray-100 justify-end">
-                Menu
-              </span>
-              <Drawer.Close>
-                <div className="py-2">
-                  <X size={22} />
-                </div>
-              </Drawer.Close>
-            </div>
-            <nav className="mt-3 flex flex-col space-y-4 items-start">
-              {headerNavLinks.map((link, index) => (
-                <Drawer.Close key={link.title} asChild>
-                  <div>
-                    <LettersPullUp
-                      text={link.title}
-                      className="text-2xl font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
-                      delay={index * 0.05} // Delay untuk setiap baris link
-                      href={link.href} // Teruskan href ke LettersPullUp
-                    />
-                  </div>
+      <AnimatePresence>
+        <Drawer.Portal>
+          <Drawer.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
+          <Drawer.Content
+            className="right-2 top-2 bottom-2 fixed z-10 outline-none w-[320px] flex"
+            style={{ '--initial-transform': 'calc(100% + 8px)' } as React.CSSProperties}
+          >
+            <motion.div
+              initial={{ x: 320, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 320, opacity: 0 }}
+              transition={{ type: "spring", damping: 20, stiffness: 100 }}
+              className="bg-white dark:bg-zinc-900 h-full w-full pt-4 px-4 flex flex-col rounded-[16px] border border-gray-200 dark:border-gray-800 shadow-xl"
+            >
+              <div className="flex justify-between items-center border-b border-gray-200 dark:border-gray-800 pb-3">
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-2xl pt-2 font-bold tracking-tight bg-gradient-to-r from-primary-500 to-primary-700 dark:from-primary-400 dark:to-primary-600 text-transparent bg-clip-text"
+                >
+                  Navigation
+                </motion.span>
+                <Drawer.Close>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 90 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <X className="w-5 h-5" />
+                    </motion.div>
+                  </Button>
                 </Drawer.Close>
-              ))}
-            </nav>
-          </div>
-          <div className="fixed bottom-0 left-0 right-0 z-50">
-            <Separator />
-            <MusicPlayer />
-          </div>
-        </Drawer.Content>
-      </Drawer.Portal>
+              </div>
+
+              <nav className="mt-6 flex flex-col space-y-2">
+                {headerNavLinks.map((link, index) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <Drawer.Close key={link.title} asChild>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 + 0.3 }}
+                      >
+                        <Link
+                          href={link.href}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+                          }}
+                        >
+                          <div
+                            className={`group relative flex items-center justify-between p-3 rounded-lg transition-all duration-200
+                              ${isActive 
+                                ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-500 dark:text-primary-400' 
+                                : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-900 dark:text-gray-100'
+                              }`}
+                          >
+                            <LettersPullUp
+                              text={link.title}
+                              className="text-xl font-medium"
+                              delay={index * 0.05}
+                            />
+                            <motion.div
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.1 + 0.5 }}
+                            >
+                              <ChevronRight className={`w-4 h-4 transition-transform duration-200
+                                ${isActive ? 'text-primary-500 dark:text-primary-400' : 'text-gray-400 dark:text-gray-600'}
+                                group-hover:translate-x-1`}
+                              />
+                            </motion.div>
+                            {isActive && (
+                              <motion.div
+                                layoutId="activeNavItem"
+                                className="absolute inset-0 rounded-lg ring-1 ring-primary-500 dark:ring-primary-400"
+                                transition={{ duration: 0.2 }}
+                              />
+                            )}
+                          </div>
+                        </Link>
+                      </motion.div>
+                    </Drawer.Close>
+                  );
+                })}
+              </nav>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="mt-auto mb-20"
+              >
+                <Separator className="my-4" />
+                <MusicPlayer />
+              </motion.div>
+            </motion.div>
+          </Drawer.Content>
+        </Drawer.Portal>
+      </AnimatePresence>
     </Drawer.Root>
   );
 }
@@ -69,12 +144,10 @@ function LettersPullUp({
   text,
   className = '',
   delay = 0,
-  href, // Tambahkan prop href
 }: {
   text: string;
   className?: string;
   delay?: number;
-  href: string; // Terima prop href
 }) {
   const splittedText = text.split('');
 
@@ -84,40 +157,33 @@ function LettersPullUp({
       y: 0,
       opacity: 1,
       transition: {
-        delay: i * 0.01 + delay, // Percepat animasi dan tambahkan delay per baris
-        duration: 0.3, // Percepat durasi animasi
+        delay: i * 0.03 + delay,
+        duration: 0.3,
+        type: "spring",
+        damping: 10,
       },
     }),
-    exit: { y: 8, opacity: 0 }, // Animasi exit
+    exit: { y: 8, opacity: 0 },
   };
 
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true });
 
   return (
-    <Link
-      href={href}
-      onClick={(e) => {
-        e.stopPropagation(); // Mencegah event klik menyebar ke Drawer.Close
-        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' })); // Tutup drawer
-      }}
-      className={className}
-    >
-      <div className="flex">
-        {splittedText.map((current, i) => (
-          <motion.div
-            key={i}
-            ref={ref}
-            variants={pullupVariant}
-            initial="initial"
-            animate={isInView ? 'animate' : ''}
-            exit="exit" // Tambahkan animasi exit
-            custom={i}
-          >
-            {current === ' ' ? <span>&nbsp;</span> : current}
-          </motion.div>
-        ))}
-      </div>
-    </Link>
+    <div className={`flex ${className}`}>
+      {splittedText.map((current, i) => (
+        <motion.div
+          key={i}
+          ref={ref}
+          variants={pullupVariant}
+          initial="initial"
+          animate={isInView ? 'animate' : ''}
+          exit="exit"
+          custom={i}
+        >
+          {current === ' ' ? <span>&nbsp;</span> : current}
+        </motion.div>
+      ))}
+    </div>
   );
 }

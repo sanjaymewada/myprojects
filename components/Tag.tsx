@@ -1,18 +1,22 @@
-import Link from 'next/link'
-import { slug } from 'github-slugger'
-interface Props {
+import { cn } from '../lib/utils'
+
+interface TagProps {
   text: string
+  className?: string
 }
 
-const Tag = ({ text }: Props) => {
+export default function Tag({ text, className }: TagProps) {
   return (
-    <Link
-      href={`/tags/${slug(text)}`}
-      className="mr-2 text-sm rounded-sm font-medium uppercase bg-slate-100 dark:bg-white/10 px-2 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+    <span
+      className={cn(
+        'inline-flex items-center rounded-lg bg-primary-100/10 px-3 py-1 text-xs font-medium text-primary-700 ring-1 ring-inset ring-primary-700/10',
+        'dark:bg-primary-400/10 dark:text-primary-400 dark:ring-primary-400/20',
+        'transition-colors duration-200',
+        'hover:bg-primary-100/20 dark:hover:bg-primary-400/20',
+        className
+      )}
     >
-      {text.split(' ').join('-')}
-    </Link>
+      {text}
+    </span>
   )
 }
-
-export default Tag

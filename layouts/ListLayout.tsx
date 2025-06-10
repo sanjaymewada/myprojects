@@ -8,6 +8,31 @@ import type { Blog } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import { motion } from 'framer-motion'
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  }),
+};
+
+const tagVariants = {
+  initial: { opacity: 0, scale: 0.8 },
+  animate: { 
+    opacity: 1, 
+    scale: 1,
+    transition: {
+      duration: 0.2,
+    }
+  },
+};
 
 interface PaginationProps {
   totalPages: number
@@ -116,40 +141,84 @@ export default function ListLayout({
         </div>
         <ul>
           {!filteredBlogPosts.length && 'No posts found.'}
-          {displayPosts.map((post) => {
+          {displayPosts.map((post, index) => {
             const { path, date, title, summary, tags } = post
             return (
-              <li
+              <motion.div
                 key={path}
-                className="py-4 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-200 rounded-lg px-4"
+                custom={index}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={fadeInUp}
+                className="group relative transform transition-all duration-500 hover:scale-[1.01] mb-8"
               >
-                <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                  <dl>
-                    <dt className="sr-only">Published on</dt>
-                    <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                      <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
-                    </dd>
-                  </dl>
-                  <div className="space-y-3 xl:col-span-3">
-                    <div>
-                      <h3 className="text-2xl py-1 font-bold leading-8 tracking-tight">
-                        <Link
-                          href={`/${path}`}
-                          className="text-gray-900 dark:text-gray-100 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
-                        >
-                          {title}
-                        </Link>
-                      </h3>
-                      <div className="flex flex-wrap">
-                        {tags?.map((tag) => <Tag key={tag} text={tag} />)}
-                      </div>
+                <div className="flex flex-col space-y-4 rounded-2xl border border-gray-200/10 bg-white/5 backdrop-blur-lg p-6 dark:border-gray-800/50 dark:bg-gray-900/50 md:flex-row md:items-center md:space-x-6 md:space-y-0 hover:border-gray-300/30 dark:hover:border-gray-700/70 transition-colors duration-300">
+                  {/* Date Column */}
+                  <div className="w-full shrink-0 md:w-48">
+                    <time className="text-sm font-medium text-gray-500 dark:text-gray-400" dateTime={date}>
+                      {formatDate(date, siteMetadata.locale)}
+                    </time>
+                  </div>
+
+                  {/* Content Column */}
+                  <div className="flex flex-1 flex-col space-y-4">
+                    <div className="flex flex-col space-y-3">
+                      <Link
+                        href={`/${path}`}
+                        className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
+                      >
+                        {title}
+                      </Link>
+                      <p className="prose max-w-none text-gray-600 dark:text-gray-300 line-clamp-2">
+                        {summary}
+                      </p>
                     </div>
-                    <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                      {summary}
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {tags?.map((tag) => (
+                        <motion.div
+                          key={tag}
+                          variants={tagVariants}
+                          initial="initial"
+                          whileInView="animate"
+                          viewport={{ once: true }}
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          <Tag text={tag} />
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Read More Link */}
+                    <div className="flex items-center text-base font-medium text-primary-500 dark:text-primary-400 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors duration-200">
+                      <span className="group-hover:underline">Read more</span>
+                      <motion.svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="ml-1 h-4 w-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        initial={{ x: 0 }}
+                        animate={{ x: 3 }}
+                        transition={{
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                          duration: 1,
+                        }}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </motion.svg>
                     </div>
                   </div>
-                </article>
-              </li>
+                </div>
+              </motion.div>
             )
           })}
         </ul>
