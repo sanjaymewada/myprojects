@@ -3,7 +3,6 @@
 import siteMetadata from '@/data/siteMetadata';
 import headerNavLinks from '@/data/headerNavLinks';
 import Link from './Link';
-import MobileNav from './MobileNav';
 import ThemeSwitch from './ThemeSwitch';
 import SearchButton from './SearchButton';
 import VaulDrawer from './DrawerNav';
@@ -14,7 +13,8 @@ const Header = () => {
   const pathname = usePathname();
   
   const headerClass = `
-    flex items-center justify-between w-full py-4 px-6 mx-auto max-w-7xl
+    flex items-center justify-between w-full py-4 px-6 mx-auto
+    max-w-3xl xl:max-w-[1400px] 2xl:max-w-[1600px]
     rounded-xl border border-gray-200/30 bg-white/70 backdrop-blur-xl shadow-lg
     dark:border-gray-700/30 dark:bg-gray-900/70 dark:shadow-2xl dark:shadow-gray-950/10
     transition-all duration-300 hover:shadow-xl hover:border-gray-300/50 dark:hover:border-gray-600/50
