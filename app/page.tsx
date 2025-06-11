@@ -17,18 +17,25 @@ if (typeof window !== 'undefined') {
   const style = document.createElement('style');
   style.textContent = `
     @keyframes gradient-xy {
-      0% {
+      0%, 100% {
         background-position: 0% 50%;
+        filter: hue-rotate(0deg);
+      }
+      25% {
+        background-position: 100% 50%;
+        filter: hue-rotate(3deg);
       }
       50% {
-        background-position: 100% 50%;
+        background-position: 50% 100%;
+        filter: hue-rotate(-3deg);
       }
-      100% {
-        background-position: 0% 50%;
+      75% {
+        background-position: 0% 100%;
+        filter: hue-rotate(0deg);
       }
     }
     .animate-gradient-xy {
-      animation: gradient-xy 15s ease infinite;
+      animation: gradient-xy 15s ease-in-out infinite;
       background-size: 400% 400%;
     }
   `;
@@ -154,13 +161,37 @@ export default function Page() {
       </div>
 
       <div className="relative w-full max-w-6xl mx-auto px-4 mb-12">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-900/20 dark:to-purple-900/20 p-1.5">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 dark:from-blue-600/20 dark:to-purple-600/20 animate-gradient-xy"></div>
-          <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-xl p-8 border border-gray-200/20 dark:border-gray-700/20">
-            <h2 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-              Latest DevOps Projects
-            </h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-3 shadow-lg shadow-purple-500/20"></div>
+        <div className="relative group">
+          {/* Background decorative elements */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+          <div className="absolute -inset-px bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-50 group-hover:opacity-60 transition-all duration-500"></div>
+          
+          {/* Main card */}
+          <div className="relative rounded-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl p-0.5 shadow-2xl shadow-blue-500/10">
+            <div className="relative overflow-hidden rounded-[14px] p-8">
+              {/* Animated gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white/80 to-purple-50/50 dark:from-blue-950/50 dark:via-gray-900/80 dark:to-purple-950/50 animate-gradient-xy"></div>
+              
+              {/* Content wrapper */}
+              <div className="relative">
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-500/10 to-blue-500/10 rounded-full blur-2xl"></div>
+                
+                {/* Heading */}
+                <div className="relative">
+                  <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent pb-2">
+                    Latest DevOps Projects
+                  </h2>
+                  {/* Animated underline */}
+                  <div className="relative h-1 w-32">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-sm"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mix-blend-overlay"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -180,7 +211,10 @@ export default function Page() {
               <div className="flex flex-col space-y-4 rounded-2xl border border-gray-200/10 bg-white/5 backdrop-blur-lg p-6 dark:border-gray-800/50 dark:bg-gray-900/50 md:flex-row md:items-center md:space-x-6 md:space-y-0 hover:border-gray-300/30 dark:hover:border-gray-700/70 transition-colors duration-300">
                 {/* Date Column */}
                 <div className="w-full shrink-0 md:w-48">
-                  <time className="text-sm font-medium text-gray-500 dark:text-gray-400" dateTime={post.date}>
+                  <time className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300" dateTime={post.date}>
+                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
                     {formatDate(post.date)}
                   </time>
                 </div>
@@ -190,11 +224,13 @@ export default function Page() {
                   <div className="flex flex-col space-y-3">
                     <Link 
                       href={`/blog/${post.slug}`}
-                      className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
+                      className="group/title text-2xl font-bold tracking-tight"
                     >
-                      {post.title}
+                      <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-[length:0%_2px] bg-no-repeat bg-left-bottom group-hover/title:bg-[length:100%_2px] transition-all duration-500">
+                        {post.title}
+                      </span>
                     </Link>
-                    <p className="prose max-w-none text-gray-600 dark:text-gray-300 line-clamp-2">
+                    <p className="prose max-w-none text-gray-600 dark:text-gray-300 line-clamp-2 leading-relaxed">
                       {post.summary}
                     </p>
                   </div>
@@ -209,6 +245,7 @@ export default function Page() {
                         whileInView="animate"
                         viewport={{ once: true }}
                         whileHover={{ scale: 1.05 }}
+                        className="transform-gpu"
                       >
                         <Tag text={tag} />
                       </motion.div>
@@ -216,11 +253,14 @@ export default function Page() {
                   </div>
 
                   {/* Read More Link */}
-                  <div className="flex items-center text-base font-medium text-primary-500 dark:text-primary-400 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors duration-200">
-                    <span className="group-hover:underline">Read more</span>
+                  <div className="group/link inline-flex items-center space-x-2 text-base font-medium text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-200">
+                    <span className="relative">
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 dark:bg-blue-400 transform scale-x-0 transition-transform duration-300 group-hover/link:scale-x-100"></span>
+                      Read more
+                    </span>
                     <motion.svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="ml-1 h-4 w-4"
+                      className="h-5 w-5"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
