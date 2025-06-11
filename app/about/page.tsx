@@ -21,7 +21,7 @@ const AchievementItem = ({ label, value }: { label: string; value: number }) => 
     <h2 className="font-semibold text-3xl md:text-2xl text-center">
       <NumberTicker value={value} />+
       <div className="text-lg mt-2 text-gray-600 dark:text-gray-400">{label}</div>
-    </h2>
+  </h2>
   </motion.div>
 );
 
@@ -69,7 +69,7 @@ export default function Page() {
           className="space-y-8"
         >
           <motion.div variants={item}>
-            <MDXLayoutRenderer code={author.body.code} />
+        <MDXLayoutRenderer code={author.body.code} />
           </motion.div>
 
           {/* Achievements Section */}
@@ -92,7 +92,7 @@ export default function Page() {
               <SkillCard icon={FaServer} title="CI/CD" />
               <SkillCard icon={FaBlog} title="Blogger" />
               <SkillCard icon={FaUserTie} title="Content Creator" />
-            </div>
+        </div>
           </motion.div>
 
           {/* Additional Skills Tags */}
@@ -138,7 +138,7 @@ export default function Page() {
               >
                 Jenkins
               </motion.span>
-            </div>
+        </div>
           </motion.div>
 
           {/* Call to Action */}
@@ -150,10 +150,10 @@ export default function Page() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <DownloadButton
-                label="Join our Community"
-                url={siteMetadata.CVUrl}
-              />
+          <DownloadButton
+            label="Join our Community"
+            url={siteMetadata.CVUrl}
+          />
             </motion.div>
           </motion.div>
         </motion.div>

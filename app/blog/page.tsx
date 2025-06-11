@@ -69,12 +69,12 @@ export default function BlogPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.6 }}
       >
-        <ListLayout
-          posts={posts}
-          initialDisplayPosts={initialDisplayPosts}
-          pagination={pagination}
+    <ListLayout
+      posts={posts}
+      initialDisplayPosts={initialDisplayPosts}
+      pagination={pagination}
           title=""
-        />
+    />
       </motion.div>
     </motion.div>
   )

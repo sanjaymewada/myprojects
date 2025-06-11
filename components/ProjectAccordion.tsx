@@ -6,6 +6,7 @@ import { File, Github, Globe, Plus } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/components/ui/badge";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface Project {
   slug: string;
@@ -17,29 +18,46 @@ interface Project {
   code?: string;
   document?: string;
   url?: string;
-  gambar?: string; // Properti gambar menjadi optional
+  gambar?: string;
 }
 
 export default function ProjectAccordion({ project }: { project: Project }) {
   return (
     <Accordion type="single" collapsible className="w-full">
-      <AccordionItem value={project.slug} key={project.slug}>
+      <AccordionItem value={project.slug} key={project.slug} className="group">
         <AccordionPrimitive.Header className="flex">
-          <AccordionPrimitive.Trigger className="flex flex-1 items-center justify-between py-2 text-left text-[15px] font-semibold leading-6 transition-all [&>svg>path:last-child]:origin-center [&>svg>path:last-child]:transition-all [&>svg>path:last-child]:duration-200 [&[data-state=open]>svg>path:last-child]:rotate-90 [&[data-state=open]>svg>path:last-child]:opacity-0 [&[data-state=open]>svg]:rotate-180">
-            <div className="flex flex-col space-y-1">
-              <span className="text-xl">
+          <AccordionPrimitive.Trigger className="flex flex-1 items-start justify-between rounded-xl border border-neutral-200/50 bg-white/50 p-6 text-left backdrop-blur-sm transition-all hover:bg-white/80 dark:border-neutral-800/50 dark:bg-neutral-950/50 dark:hover:bg-neutral-900/50">
+            <div className="flex flex-col space-y-3">
+              <motion.span 
+                className="relative inline-flex text-xl font-semibold md:text-2xl"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+              >
                 {project.name}
-              </span>
+                <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300 group-hover:w-full" />
+              </motion.span>
+              
               {project.description && (
-                <span className="text-sm font-normal opacity-80">
+                <motion.span 
+                  className="text-sm font-normal text-neutral-600 dark:text-neutral-400"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2, duration: 0.5 }}
+                >
                   {project.description}
-                </span>
+                </motion.span>
               )}
-              {/* Badge links di bawah deskripsi */}
-              <div className="flex flex-row flex-wrap items-start gap-1 mt-2">
+              
+              <motion.div 
+                className="flex flex-row flex-wrap items-start gap-2"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+              >
                 {project.url && (
                   <Link href={project.url} target="_blank">
-                    <Badge variant="outline" className="rounded-md flex gap-1.5 px-2 text-[11px]">
+                    <Badge variant="default" className="rounded-full flex gap-1.5 px-3 py-1 text-[11px] transition-transform hover:scale-105">
                       <Globe aria-hidden="true" size={14} />
                       Website
                     </Badge>
@@ -47,7 +65,7 @@ export default function ProjectAccordion({ project }: { project: Project }) {
                 )}
                 {project.code && (
                   <Link href={project.code} target="_blank">
-                    <Badge variant="outline" className="rounded-md flex gap-1.5 px-2 text-[11px]">
+                    <Badge variant="outline" className="rounded-full flex gap-1.5 px-3 py-1 text-[11px] transition-transform hover:scale-105">
                       <Github aria-hidden="true" size={14} />
                       Code
                     </Badge>
@@ -55,50 +73,78 @@ export default function ProjectAccordion({ project }: { project: Project }) {
                 )}
                 {project.document && (
                   <Link href={project.document} target="_blank">
-                    <Badge variant="outline" className="rounded-md flex gap-1.5 px-2 text-[11px]">
+                    <Badge variant="secondary" className="rounded-full flex gap-1.5 px-3 py-1 text-[11px] transition-transform hover:scale-105">
                       <File aria-hidden="true" size={14} />
                       Paper
                     </Badge>
                   </Link>
                 )}
-              </div>
+              </motion.div>
             </div>
-            {/* Ikon Plus di sebelah kanan */}
-            <Plus
-              size={16}
-              strokeWidth={2}
-              className="shrink-0 opacity-60 transition-transform duration-200"
-              aria-hidden="true"
-            />
+            
+            <div className="relative h-8 w-8">
+              <span className="absolute inset-0 rounded-full bg-neutral-100 transition-transform duration-300 group-hover:scale-110 dark:bg-neutral-800" />
+              <Plus
+                size={16}
+                strokeWidth={2}
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-60 transition-all duration-300 group-hover:rotate-180 group-hover:opacity-100"
+                aria-hidden="true"
+              />
+            </div>
           </AccordionPrimitive.Trigger>
         </AccordionPrimitive.Header>
-        <AccordionContent>
-          <div className="flex flex-col md:flex-row gap-6">
-            {/* Gambar di sebelah kiri (hanya ditampilkan jika ada) */}
-            {project.gambar && (
-              <div className="w-full md:w-1/2">
-                <Image
-                  src={project.gambar} // Gunakan properti gambar dari project
-                  alt={project.name} // Alt text sesuai nama proyek
-                  width={500} // Lebar gambar
-                  height={300} // Tinggi gambar
-                  className="rounded-lg object-cover"
-                />
-              </div>
-            )}
+        
+        <AccordionContent className="overflow-hidden">
+          <motion.div 
+            className="rounded-xl border border-neutral-200/50 bg-white/50 p-6 backdrop-blur-sm dark:border-neutral-800/50 dark:bg-neutral-950/50"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="flex flex-col gap-6 md:flex-row">
+              {project.gambar && (
+                <motion.div 
+                  className="relative w-full overflow-hidden rounded-lg md:w-1/2"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2, duration: 0.5 }}
+                >
+                  <Image
+                    src={project.gambar}
+                    alt={project.name}
+                    width={500}
+                    height={300}
+                    className="transform object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/20 to-transparent" />
+                </motion.div>
+              )}
 
-            {/* Daftar teknologi sebagai Badge di sebelah kanan */}
-            <div className={`w-full ${project.gambar ? 'md:w-1/2' : 'md:w-full'}`}>
-              <h4 className="mb-2 text-primary-500 font-semibold">Tech stack:</h4>
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech, index) => (
-                  <Badge key={index} variant="outline" className="rounded-md text-primary-500">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
+              <motion.div 
+                className={`w-full ${project.gambar ? 'md:w-1/2' : 'md:w-full'}`}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+              >
+                <h4 className="mb-4 font-semibold text-neutral-900 dark:text-neutral-100">Tech stack:</h4>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4 + index * 0.1, duration: 0.3 }}
+                    >
+                      <Badge variant="outline" className="rounded-full px-3 py-1 transition-all duration-300 hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                        {tech}
+                      </Badge>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </AccordionContent>
       </AccordionItem>
     </Accordion>

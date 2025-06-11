@@ -32,7 +32,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ className, gradient, hoverEffect = true, ...props }, ref) => {
     return (
       <motion.div
-        ref={ref}
+    ref={ref}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
@@ -45,8 +45,8 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
           "hover:border-border/80 dark:hover:border-border/60",
           className
         )}
-        {...props}
-      />
+    {...props}
+  />
     );
   }
 );
@@ -73,18 +73,18 @@ interface CardTitleProps extends HTMLMotionProps<"h3"> {
 const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
   ({ className, gradient, ...props }, ref) => (
     <motion.h3
-      ref={ref}
+    ref={ref}
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3, delay: 0.2 }}
-      className={cn(
+    className={cn(
         "text-2xl font-semibold tracking-tight",
         gradient && "bg-gradient-to-br from-foreground to-foreground/70 dark:from-foreground dark:to-foreground/60 bg-clip-text text-transparent",
         "hover:bg-gradient-to-r hover:from-primary hover:to-primary/80 hover:bg-clip-text hover:text-transparent transition-all duration-300",
-        className
-      )}
-      {...props}
-    />
+      className
+    )}
+    {...props}
+  />
   )
 );
 CardTitle.displayName = "CardTitle";
@@ -92,7 +92,7 @@ CardTitle.displayName = "CardTitle";
 const CardDescription = React.forwardRef<HTMLParagraphElement, HTMLMotionProps<"p">>(
   ({ className, ...props }, ref) => (
     <motion.p
-      ref={ref}
+    ref={ref}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3, delay: 0.3 }}
@@ -101,8 +101,8 @@ const CardDescription = React.forwardRef<HTMLParagraphElement, HTMLMotionProps<"
         "leading-relaxed tracking-wide",
         className
       )}
-      {...props}
-    />
+    {...props}
+  />
   )
 );
 CardDescription.displayName = "CardDescription";
@@ -110,17 +110,17 @@ CardDescription.displayName = "CardDescription";
 const CardContent = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
   ({ className, ...props }, ref) => (
     <motion.div
-      ref={ref}
+    ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.3 }}
-      className={cn(
-        "text-pretty font-sans text-sm text-muted-foreground",
+    className={cn(
+      "text-pretty font-sans text-sm text-muted-foreground",
         "leading-relaxed [&:not(:first-child)]:pt-4",
-        className
-      )}
-      {...props}
-    />
+      className
+    )}
+    {...props}
+  />
   )
 );
 CardContent.displayName = "CardContent";
@@ -128,7 +128,7 @@ CardContent.displayName = "CardContent";
 const CardFooter = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
   ({ className, ...props }, ref) => (
     <motion.div
-      ref={ref}
+    ref={ref}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.4 }}
@@ -137,8 +137,8 @@ const CardFooter = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
         "border-t border-border/50",
         className
       )}
-      {...props}
-    />
+    {...props}
+  />
   )
 );
 CardFooter.displayName = "CardFooter";

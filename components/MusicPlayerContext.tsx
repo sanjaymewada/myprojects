@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 import { Howl } from "howler";
-import { playlist, Song } from "@/data/playlist";
+import { playlist } from "@/data/playlist";
 
 type MusicPlayerContextType = {
   isPlaying: boolean;
@@ -10,15 +10,22 @@ type MusicPlayerContextType = {
   currentTime: number;
   duration: number;
   isLoading: boolean;
+  volume: number;
+  isMuted: boolean;
   play: (songIndex?: number) => void;
   pause: () => void;
   togglePlayPause: () => void;
   skipBack: () => void;
   skipForward: () => void;
   seek: (time: number) => void;
+  setVolume: (volume: number) => void;
+  toggleMute: () => void;
 };
 
 const MusicPlayerContext = createContext<MusicPlayerContextType | null>(null);
+
+const VOLUME_KEY = "music-player-volume";
+const MUTED_KEY = "music-player-muted";
 
 export function MusicPlayerProvider({ children }: { children: React.ReactNode }) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -26,7 +33,29 @@ export function MusicPlayerProvider({ children }: { children: React.ReactNode })
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [volume, setVolumeState] = useState(() => {
+    if (typeof window !== "undefined") {
+      const savedVolume = localStorage.getItem(VOLUME_KEY);
+      return savedVolume ? parseFloat(savedVolume) : 1.0;
+    }
+    return 1.0;
+  });
+  const [isMuted, setIsMuted] = useState(() => {
+    if (typeof window !== "undefined") {
+      const savedMuted = localStorage.getItem(MUTED_KEY);
+      return savedMuted ? JSON.parse(savedMuted) : false;
+    }
+    return false;
+  });
   const [howl, setHowl] = useState<Howl | null>(null);
+
+  // Save volume and muted state to localStorage
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(VOLUME_KEY, volume.toString());
+      localStorage.setItem(MUTED_KEY, JSON.stringify(isMuted));
+    }
+  }, [volume, isMuted]);
 
   const play = (songIndex?: number) => {
     setIsLoading(true);
@@ -39,8 +68,12 @@ export function MusicPlayerProvider({ children }: { children: React.ReactNode })
 
     const sound = new Howl({
       src: [playlist[index].audioUrl],
-      volume: 1.0,
-      onend: skipForward,
+      volume: isMuted ? 0 : volume,
+      onend: () => {
+        // Auto advance to next song
+        const nextIndex = (index + 1) % playlist.length;
+        play(nextIndex);
+      },
       onload: () => {
         setDuration(sound.duration());
         setIsLoading(false);
@@ -51,6 +84,12 @@ export function MusicPlayerProvider({ children }: { children: React.ReactNode })
       },
       onpause: () => setIsPlaying(false),
       onstop: () => setIsPlaying(false),
+      onseek: () => {
+        setCurrentTime(sound.seek() as number);
+      },
+      onvolume: () => {
+        setVolumeState(sound.volume());
+      },
     });
 
     setHowl(sound);
@@ -87,6 +126,25 @@ export function MusicPlayerProvider({ children }: { children: React.ReactNode })
     }
   };
 
+  const setVolume = (newVolume: number) => {
+    const clampedVolume = Math.min(Math.max(newVolume, 0), 1);
+    if (howl) {
+      howl.volume(clampedVolume);
+    }
+    setVolumeState(clampedVolume);
+    if (clampedVolume > 0) {
+      setIsMuted(false);
+    }
+  };
+
+  const toggleMute = () => {
+    if (howl) {
+      const newMutedState = !isMuted;
+      howl.volume(newMutedState ? 0 : volume);
+      setIsMuted(newMutedState);
+    }
+  };
+
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
@@ -118,12 +176,16 @@ export function MusicPlayerProvider({ children }: { children: React.ReactNode })
         currentTime,
         duration,
         isLoading,
+        volume,
+        isMuted,
         play,
         pause,
         togglePlayPause,
         skipBack,
         skipForward,
         seek,
+        setVolume,
+        toggleMute,
       }}
     >
       {children}

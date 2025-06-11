@@ -25,7 +25,7 @@ export default function Projects() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
               >
-                More DevOps Resources
+              More DevOps Resources
               </motion.h1>
               <motion.p 
                 initial={{ opacity: 0 }}
@@ -46,7 +46,7 @@ export default function Projects() {
                 <Link href={siteMetadata.github} className="flex items-center gap-2">
                   <FaGithub className="w-5 h-5" />
                   <span>View on GitHub</span>
-                </Link>
+              </Link>
               </Button>
             </motion.div>
           </motion.div>
@@ -65,7 +65,7 @@ export default function Projects() {
                   {index === 1 && 'Learn cloud-native architecture and deployment'}
                   {index === 2 && 'Explore automation and CI/CD pipelines'}
                 </p>
-              </div>
+          </div>
             ))}
           </motion.div>
         </div>

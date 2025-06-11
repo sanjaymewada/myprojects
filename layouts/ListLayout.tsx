@@ -164,16 +164,16 @@ export default function ListLayout({
                   {/* Content Column */}
                   <div className="flex flex-1 flex-col space-y-4">
                     <div className="flex flex-col space-y-3">
-                      <Link
-                        href={`/${path}`}
+                        <Link
+                          href={`/${path}`}
                         className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
-                      >
-                        {title}
-                      </Link>
+                        >
+                          {title}
+                        </Link>
                       <p className="prose max-w-none text-gray-600 dark:text-gray-300 line-clamp-2">
                         {summary}
                       </p>
-                    </div>
+                      </div>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2">
