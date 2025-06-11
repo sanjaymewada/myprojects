@@ -323,7 +323,7 @@ export default function Page() {
                   }}
                   className="w-full px-4 mt-12"
                 >
-                  <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent"></div>
+                  <Separator animated gradient className="my-12" />
                 </motion.div>
               )}
             </motion.div>
