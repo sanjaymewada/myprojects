@@ -101,7 +101,7 @@ export default function MusicPlayer() {
       animate={{ opacity: 1, y: 0 }}
       className={cn(
         "relative overflow-hidden rounded-xl border border-neutral-200/50 bg-white/80 shadow-sm backdrop-blur-md dark:border-neutral-800/50 dark:bg-neutral-900/80",
-        isDesktop ? "p-6" : "p-3"
+        isDesktop ? "p-6" : "p-2"
       )}
     >
       <div className="relative z-10">
@@ -316,10 +316,10 @@ export default function MusicPlayer() {
           </div>
         ) : (
           // Mobile Layout
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             {/* Album Art */}
             <motion.div 
-              className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg shadow-sm"
+              className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md shadow-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -333,23 +333,23 @@ export default function MusicPlayer() {
 
             {/* Song Info & Controls */}
             <div className="flex flex-1 flex-col min-w-0">
-              <div className="flex items-center justify-between mb-1">
+              <div className="flex items-center justify-between gap-1">
                 <div className="min-w-0 flex-1">
-                  <h2 className="text-sm font-medium text-neutral-900 dark:text-white truncate">
+                  <h2 className="text-xs font-medium text-neutral-900 dark:text-white truncate">
                     {currentSong.title}
                   </h2>
-                  <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate">
+                  <p className="text-[10px] text-neutral-500 dark:text-neutral-400 truncate">
                     {currentSong.artist}
                   </p>
                 </div>
-                <span className="text-xs text-neutral-500 dark:text-neutral-400 ml-2">
-                  {formatTime(currentTime)} / {formatTime(duration)}
+                <span className="text-[10px] text-neutral-500 dark:text-neutral-400 ml-1 shrink-0">
+                  {formatTime(currentTime)}
                 </span>
               </div>
 
               {/* Progress Bar */}
               <div
-                className="group relative h-1 w-full cursor-pointer rounded-full bg-neutral-200 dark:bg-neutral-800"
+                className="group relative h-1 w-full cursor-pointer rounded-full bg-neutral-200 dark:bg-neutral-800 my-1"
                 onClick={handleProgressClick}
                 onMouseMove={handleProgressDrag}
                 onMouseDown={() => setIsDragging(true)}
@@ -367,51 +367,51 @@ export default function MusicPlayer() {
               </div>
 
               {/* Controls */}
-              <div className="flex items-center justify-between mt-2">
-                <div className="flex items-center gap-2">
+              <div className="flex items-center justify-between mt-1">
+                <div className="flex items-center gap-1">
                   <motion.button 
-                    className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+                    className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white p-1"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={skipBack}
                   >
-                    <SkipBack className="h-4 w-4" />
+                    <SkipBack className="h-3 w-3" />
                   </motion.button>
                   
                   <motion.button
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white shadow-sm hover:bg-blue-600"
+                    className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-white shadow-sm hover:bg-blue-600"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={togglePlayPause}
                   >
                     {isLoading ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <Loader2 className="h-3 w-3 animate-spin" />
                     ) : isPlaying ? (
-                      <Pause className="h-4 w-4" />
+                      <Pause className="h-3 w-3" />
                     ) : (
-                      <CirclePlay className="h-4 w-4" />
+                      <CirclePlay className="h-3 w-3" />
                     )}
                   </motion.button>
                   
                   <motion.button 
-                    className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+                    className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white p-1"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={skipForward}
                   >
-                    <SkipForward className="h-4 w-4" />
+                    <SkipForward className="h-3 w-3" />
                   </motion.button>
 
                   <motion.button
-                    className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+                    className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white p-1"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={toggleMute}
                   >
                     {isMuted ? (
-                      <VolumeX className="h-4 w-4" />
+                      <VolumeX className="h-3 w-3" />
                     ) : (
-                      <Volume2 className="h-4 w-4" />
+                      <Volume2 className="h-3 w-3" />
                     )}
                   </motion.button>
                 </div>
@@ -419,11 +419,11 @@ export default function MusicPlayer() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-8 rounded-full px-3 text-xs font-medium text-neutral-600 hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800/50 dark:hover:text-white"
+                  className="h-6 rounded-full px-2 text-[10px] font-medium text-neutral-600 hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800/50 dark:hover:text-white"
                   onClick={() => setShowPlaylist(!showPlaylist)}
                 >
-                  Show playlist
-                  <ChevronDown className="ml-1 h-3 w-3" />
+                  Playlist
+                  <ChevronDown className="ml-1 h-2 w-2" />
                 </Button>
               </div>
             </div>
@@ -439,10 +439,10 @@ export default function MusicPlayer() {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                className="mt-3"
+                className="mt-2"
               >
-                <Separator animated gradient className="mb-3" />
-                <div className="space-y-1 max-h-48 overflow-y-auto">
+                <Separator animated gradient className="mb-2" />
+                <div className="space-y-0.5 max-h-36 overflow-y-auto">
                   {playlist.map((song, index) => (
                     <motion.button
                       key={song.id}
@@ -452,13 +452,13 @@ export default function MusicPlayer() {
                       custom={index}
                       onClick={() => play(index)}
                       className={cn(
-                        "group relative w-full overflow-hidden rounded-lg p-2 transition-all hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50",
+                        "group relative w-full overflow-hidden rounded-md p-1.5 transition-all hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50",
                         currentSongIndex === index && "bg-neutral-200/30 dark:bg-neutral-800/30"
                       )}
                     >
                       <div className="flex items-center gap-2">
                         <motion.div 
-                          className="relative h-8 w-8 overflow-hidden rounded-md"
+                          className="relative h-6 w-6 overflow-hidden rounded"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
@@ -470,21 +470,21 @@ export default function MusicPlayer() {
                           />
                           {currentSongIndex === index && isPlaying && (
                             <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                              <div className="h-2 w-2 animate-pulse rounded-full bg-white" />
+                              <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
                             </div>
                           )}
                         </motion.div>
 
                         <div className="flex-1 text-left min-w-0">
                           <p className={cn(
-                            "text-sm font-medium truncate",
+                            "text-xs font-medium truncate",
                             currentSongIndex === index 
                               ? "text-blue-500" 
                               : "text-neutral-900 dark:text-white"
                           )}>
                             {song.title}
                           </p>
-                          <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate">
+                          <p className="text-[10px] text-neutral-500 dark:text-neutral-400 truncate">
                             {song.artist}
                           </p>
                         </div>

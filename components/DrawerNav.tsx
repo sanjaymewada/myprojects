@@ -20,13 +20,13 @@ export default function DrawerNav() {
         <Button
           variant="ghost"
           size="icon"
-          className="sm:hidden w-9 h-9 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+          className="sm:hidden w-8 h-8 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
         >
           <motion.div
             whileHover={{ rotate: 180 }}
             transition={{ duration: 0.3 }}
           >
-            <AlignJustify className="w-5 h-5" />
+            <AlignJustify className="w-4 h-4" />
           </motion.div>
         </Button>
       </Drawer.Trigger>
@@ -34,22 +34,22 @@ export default function DrawerNav() {
         <Drawer.Portal>
           <Drawer.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
           <Drawer.Content
-            className="right-2 top-2 bottom-2 fixed z-10 outline-none w-[320px] flex"
+            className="right-2 top-2 bottom-2 fixed z-10 outline-none w-[280px] flex"
             style={{ '--initial-transform': 'calc(100% + 8px)' } as React.CSSProperties}
           >
             <motion.div
-              initial={{ x: 320, opacity: 0 }}
+              initial={{ x: 280, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 320, opacity: 0 }}
+              exit={{ x: 280, opacity: 0 }}
               transition={{ type: "spring", damping: 20, stiffness: 100 }}
-              className="bg-white dark:bg-zinc-900 h-full w-full pt-4 px-4 flex flex-col rounded-[16px] border border-gray-200 dark:border-gray-800 shadow-xl"
+              className="bg-white dark:bg-zinc-900 h-full w-full pt-3 px-3 flex flex-col rounded-[12px] border border-gray-200 dark:border-gray-800 shadow-xl"
             >
-              <div className="flex justify-between items-center border-b border-gray-200 dark:border-gray-800 pb-3">
+              <div className="flex justify-between items-center border-b border-gray-200 dark:border-gray-800 pb-2">
                 <motion.span
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-2xl pt-2 font-bold tracking-tight bg-gradient-to-r from-primary-500 to-primary-700 dark:from-primary-400 dark:to-primary-600 text-transparent bg-clip-text"
+                  className="text-lg font-medium"
                 >
                   Navigation
                 </motion.span>
@@ -57,19 +57,19 @@ export default function DrawerNav() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    className="w-7 h-7 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                   >
                     <motion.div
                       whileHover={{ rotate: 90 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <X className="w-5 h-5" />
+                      <X className="w-4 h-4" />
                     </motion.div>
                   </Button>
                 </Drawer.Close>
               </div>
 
-              <nav className="mt-6 flex flex-col space-y-2">
+              <nav className="mt-3 flex flex-col space-y-1">
                 {headerNavLinks.map((link, index) => {
                   const isActive = pathname === link.href;
                   return (
@@ -87,7 +87,7 @@ export default function DrawerNav() {
                           }}
                         >
                           <div
-                            className={`group relative flex items-center justify-between p-3 rounded-lg transition-all duration-200
+                            className={`group relative flex items-center justify-between py-2 px-3 rounded-lg transition-all duration-200
                               ${isActive 
                                 ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-500 dark:text-primary-400' 
                                 : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-900 dark:text-gray-100'
@@ -95,7 +95,7 @@ export default function DrawerNav() {
                           >
                             <LettersPullUp
                               text={link.title}
-                              className="text-xl font-medium"
+                              className="text-base font-medium"
                               delay={index * 0.05}
                             />
                             <motion.div
@@ -127,9 +127,9 @@ export default function DrawerNav() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="mt-auto mb-20"
+                className="mt-auto mb-16"
               >
-                <Separator className="my-4" />
+                <Separator className="my-3" />
                 <MusicPlayer />
               </motion.div>
             </motion.div>
