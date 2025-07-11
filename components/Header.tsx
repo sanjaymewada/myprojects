@@ -13,7 +13,7 @@ const Header = () => {
   const pathname = usePathname();
   
   const headerClass = `
-    flex items-center justify-between w-full py-4 px-6 mx-auto
+    flex items-center justify-between w-full py-2 sm:py-4 px-3 sm:px-6 mx-auto
     max-w-3xl xl:max-w-[1400px] 2xl:max-w-[1600px]
     rounded-xl border border-gray-200/30 bg-white/70 backdrop-blur-xl shadow-lg
     dark:border-gray-700/30 dark:bg-gray-900/70 dark:shadow-2xl dark:shadow-gray-950/10
@@ -22,7 +22,7 @@ const Header = () => {
   `;
 
   return (
-    <div className="px-4 py-4">
+    <div className="px-2 sm:px-4 py-2 sm:py-4">
       <motion.header 
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -43,7 +43,7 @@ const Header = () => {
               {/* Uncomment the line below to use the logo */}
               {/* <Logo /> */}
               {typeof siteMetadata.headerTitle === 'string' ? (
-                <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 dark:from-blue-400 dark:via-blue-300 dark:to-purple-400 text-transparent bg-clip-text">
+                <div className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 dark:from-blue-400 dark:via-blue-300 dark:to-purple-400 text-transparent bg-clip-text">
                   {siteMetadata.headerTitle}
                 </div>
               ) : (
@@ -53,7 +53,7 @@ const Header = () => {
           </Link>
         </motion.div>
 
-        <div className="flex items-center space-x-4 sm:space-x-6">
+        <div className="flex items-center space-x-2 sm:space-x-4 lg:space-x-6">
           <nav className="hidden sm:flex space-x-1">
             <motion.div 
               className="flex space-x-1"
@@ -107,25 +107,25 @@ const Header = () => {
             </motion.div>
           </nav>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-1 sm:space-x-3">
             <motion.div 
               whileHover={{ scale: 1.05 }} 
               whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-lg hover:bg-gray-50/80 dark:hover:bg-gray-800/50 transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg hover:bg-gray-50/80 dark:hover:bg-gray-800/50 transition-colors"
             >
               <SearchButton />
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05 }} 
               whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-lg hover:bg-gray-50/80 dark:hover:bg-gray-800/50 transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg hover:bg-gray-50/80 dark:hover:bg-gray-800/50 transition-colors"
             >
               <ThemeSwitch />
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05 }} 
               whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-lg hover:bg-gray-50/80 dark:hover:bg-gray-800/50 transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg hover:bg-gray-50/80 dark:hover:bg-gray-800/50 transition-colors"
             >
               <VaulDrawer/>
             </motion.div>

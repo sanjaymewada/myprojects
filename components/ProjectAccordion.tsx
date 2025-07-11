@@ -26,10 +26,10 @@ export default function ProjectAccordion({ project }: { project: Project }) {
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem value={project.slug} key={project.slug} className="group">
         <AccordionPrimitive.Header className="flex">
-          <AccordionPrimitive.Trigger className="flex flex-1 items-start justify-between rounded-xl border border-neutral-200/50 bg-white/50 p-6 text-left backdrop-blur-sm transition-all hover:bg-white/80 dark:border-neutral-800/50 dark:bg-neutral-950/50 dark:hover:bg-neutral-900/50">
+          <AccordionPrimitive.Trigger className="flex flex-1 items-start justify-between rounded-xl border border-neutral-200/50 bg-white/50 p-4 sm:p-6 text-left backdrop-blur-sm transition-all hover:bg-white/80 dark:border-neutral-800/50 dark:bg-neutral-950/50 dark:hover:bg-neutral-900/50">
             <div className="flex flex-col space-y-3">
               <motion.span 
-                className="relative inline-flex text-xl font-semibold md:text-2xl"
+                className="relative inline-flex text-lg sm:text-xl font-semibold md:text-2xl"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
@@ -39,8 +39,8 @@ export default function ProjectAccordion({ project }: { project: Project }) {
               </motion.span>
               
               {project.description && (
-                <motion.span 
-                  className="text-sm font-normal text-neutral-600 dark:text-neutral-400"
+                              <motion.span 
+                className="text-xs sm:text-sm font-normal text-neutral-600 dark:text-neutral-400"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.5 }}
@@ -50,14 +50,14 @@ export default function ProjectAccordion({ project }: { project: Project }) {
               )}
               
               <motion.div 
-                className="flex flex-row flex-wrap items-start gap-2"
+                className="flex flex-row flex-wrap items-start gap-1.5 sm:gap-2"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
               >
                 {project.url && (
                   <Link href={project.url} target="_blank">
-                    <Badge variant="default" className="rounded-full flex gap-1.5 px-3 py-1 text-[11px] transition-transform hover:scale-105">
+                    <Badge variant="default" className="rounded-full flex gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 text-[10px] sm:text-[11px] transition-transform hover:scale-105">
                       <Globe aria-hidden="true" size={14} />
                       Website
                     </Badge>
@@ -65,7 +65,7 @@ export default function ProjectAccordion({ project }: { project: Project }) {
                 )}
                 {project.code && (
                   <Link href={project.code} target="_blank">
-                    <Badge variant="outline" className="rounded-full flex gap-1.5 px-3 py-1 text-[11px] transition-transform hover:scale-105">
+                    <Badge variant="outline" className="rounded-full flex gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 text-[10px] sm:text-[11px] transition-transform hover:scale-105">
                       <Github aria-hidden="true" size={14} />
                       Code
                     </Badge>
@@ -73,7 +73,7 @@ export default function ProjectAccordion({ project }: { project: Project }) {
                 )}
                 {project.document && (
                   <Link href={project.document} target="_blank">
-                    <Badge variant="secondary" className="rounded-full flex gap-1.5 px-3 py-1 text-[11px] transition-transform hover:scale-105">
+                    <Badge variant="secondary" className="rounded-full flex gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 text-[10px] sm:text-[11px] transition-transform hover:scale-105">
                       <File aria-hidden="true" size={14} />
                       Paper
                     </Badge>
@@ -96,13 +96,13 @@ export default function ProjectAccordion({ project }: { project: Project }) {
         
         <AccordionContent className="overflow-hidden">
           <motion.div 
-            className="rounded-xl border border-neutral-200/50 bg-white/50 p-6 backdrop-blur-sm dark:border-neutral-800/50 dark:bg-neutral-950/50"
+            className="rounded-xl border border-neutral-200/50 bg-white/50 p-4 sm:p-6 backdrop-blur-sm dark:border-neutral-800/50 dark:bg-neutral-950/50"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="flex flex-col gap-6 md:flex-row">
+            <div className="flex flex-col gap-4 sm:gap-6 md:flex-row">
               {project.gambar && (
                 <motion.div 
                   className="relative w-full overflow-hidden rounded-lg md:w-1/2"
@@ -128,7 +128,7 @@ export default function ProjectAccordion({ project }: { project: Project }) {
                 transition={{ delay: 0.3, duration: 0.5 }}
               >
                 <h4 className="mb-4 font-semibold text-neutral-900 dark:text-neutral-100">Tech stack:</h4>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {project.technologies.map((tech, index) => (
                     <motion.div
                       key={index}
@@ -136,7 +136,7 @@ export default function ProjectAccordion({ project }: { project: Project }) {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.4 + index * 0.1, duration: 0.3 }}
                     >
-                      <Badge variant="outline" className="rounded-full px-3 py-1 transition-all duration-300 hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                      <Badge variant="outline" className="rounded-full px-2 sm:px-3 py-1 transition-all duration-300 hover:bg-neutral-100 dark:hover:bg-neutral-800">
                         {tech}
                       </Badge>
                     </motion.div>

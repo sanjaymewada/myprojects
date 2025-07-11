@@ -11,7 +11,7 @@ export default function Projects() {
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="relative space-y-8 pb-8 pt-6">
+        <div className="relative space-y-6 sm:space-y-8 pb-6 sm:pb-8 pt-4 sm:pt-6">
           {/* Decorative background elements */}
           <div className="absolute inset-0 -z-10">
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
@@ -23,14 +23,14 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className='flex flex-col md:flex-row justify-between items-start md:items-center gap-6'
+            className='flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6'
           >
             <div className="relative space-y-4">
               <motion.h1 
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative text-3xl font-extrabold leading-9 tracking-tight sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
+                className="relative text-2xl sm:text-3xl font-extrabold leading-9 tracking-tight sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
               >
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                   More DevOps Resources
@@ -40,7 +40,7 @@ export default function Projects() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="text-lg leading-7 text-gray-600 dark:text-gray-300 max-w-2xl"
+                className="text-base sm:text-lg leading-7 text-gray-600 dark:text-gray-300 max-w-2xl"
               >
                 Explore our comprehensive collection of DevOps resources, tutorials, and best practices to enhance your skills and streamline your development workflow.
               </motion.p>
@@ -74,7 +74,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12"
           >
             {['DevOps', 'Cloud Native', 'Automation'].map((category, index) => (
               <motion.div
@@ -85,14 +85,14 @@ export default function Projects() {
                 className="group relative"
               >
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl blur opacity-20 group-hover:opacity-30 transition-all duration-500"></div>
-                <div className="relative p-6 rounded-xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-gray-200/20 dark:border-gray-700/20 hover:border-blue-500/30 dark:hover:border-blue-400/30 transition-all duration-300">
+                <div className="relative p-4 sm:p-6 rounded-xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-gray-200/20 dark:border-gray-700/20 hover:border-blue-500/30 dark:hover:border-blue-400/30 transition-all duration-300">
                   {/* Decorative Elements */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-2xl transform group-hover:translate-x-6 transition-transform duration-700"></div>
                   <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-500/10 to-blue-500/10 rounded-full blur-xl transform group-hover:-translate-x-4 transition-transform duration-700"></div>
                   
                   {/* Content */}
                   <div className="relative">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                       {category}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300">

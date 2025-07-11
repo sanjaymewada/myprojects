@@ -51,7 +51,7 @@ export default function ProjectTabs() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="relative mb-6"
+        className="relative mb-4 sm:mb-6"
       >
         <TabsList className="relative flex w-full justify-start gap-2 overflow-x-auto bg-transparent pb-2 scrollbar-hide dark:bg-transparent">
           {tabTypes.map((type, index) => (
@@ -63,7 +63,7 @@ export default function ProjectTabs() {
             >
               <TabsTrigger
                 value={type}
-                className="relative rounded-full border border-neutral-200/50 bg-white/50 px-4 py-2 text-sm font-medium text-neutral-600 backdrop-blur-sm transition-all hover:bg-white/80 hover:text-neutral-900 data-[state=active]:border-blue-500/50 data-[state=active]:bg-blue-500/10 data-[state=active]:text-blue-600 dark:border-neutral-800/50 dark:bg-neutral-950/50 dark:text-neutral-400 dark:hover:bg-neutral-900/50 dark:hover:text-neutral-100 dark:data-[state=active]:border-blue-500/50 dark:data-[state=active]:bg-blue-500/10 dark:data-[state=active]:text-blue-400"
+                className="relative rounded-full border border-neutral-200/50 bg-white/50 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-neutral-600 backdrop-blur-sm transition-all hover:bg-white/80 hover:text-neutral-900 data-[state=active]:border-blue-500/50 data-[state=active]:bg-blue-500/10 data-[state=active]:text-blue-600 dark:border-neutral-800/50 dark:bg-neutral-950/50 dark:text-neutral-400 dark:hover:bg-neutral-900/50 dark:hover:text-neutral-100 dark:data-[state=active]:border-blue-500/50 dark:data-[state=active]:bg-blue-500/10 dark:data-[state=active]:text-blue-400"
               >
                 {type.charAt(0).toUpperCase() + type.slice(1)}
                 <motion.span
@@ -85,13 +85,13 @@ export default function ProjectTabs() {
       </motion.div>
 
       {tabTypes.map((type) => (
-        <TabsContent key={type} value={type} className="mt-4 space-y-4">
+        <TabsContent key={type} value={type} className="mt-3 sm:mt-4 space-y-3 sm:space-y-4">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="space-y-4"
+            className="space-y-3 sm:space-y-4"
           >
             {groupedProjects[type].map((project, index) => (
               <motion.div

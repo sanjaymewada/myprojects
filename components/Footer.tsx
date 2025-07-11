@@ -22,7 +22,7 @@ export default function Footer() {
 
   return (
     <footer className="from-gray-50 dark:from-gray-900/50 to-transparent">
-      <div className="mx-auto max-w-7xl px-6 py-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export default function Footer() {
         >
           {/* Social Icons */}
           <motion.div 
-            className="mb-8 flex flex-wrap justify-center gap-4"
+            className="mb-6 sm:mb-8 flex flex-wrap justify-center gap-3 sm:gap-4"
             initial="hidden"
             animate="show"
             variants={{
@@ -69,7 +69,7 @@ export default function Footer() {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-8 h-px w-32 bg-gradient-to-r from-transparent via-gray-400 dark:via-gray-600 to-transparent"
+            className="mb-6 sm:mb-8 h-px w-24 sm:w-32 bg-gradient-to-r from-transparent via-gray-400 dark:via-gray-600 to-transparent"
           />
 
           {/* Copyright Section */}

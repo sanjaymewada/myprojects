@@ -59,9 +59,11 @@ Ideal for developers looking to **explore hands-on DevOps and Cloud concepts** i
 
 Ensure you have the following installed before proceeding:  
 
-- **Node.js** (v18+ recommended) – [Download here](https://nodejs.org/)  
+- **Node.js** (v18+ required) – [Download here](https://nodejs.org/)  
 - **npm** (comes with Node.js) or **yarn**  
-- **Git** (optional but recommended) – [Install here](https://git-scm.com/)  
+- **Git** (optional but recommended) – [Install here](https://git-scm.com/)
+
+> **⚠️ Important**: This project requires Node.js v18 or higher. If you're using an older version, you'll encounter compatibility issues with dependencies.  
 
 ### 🚀 Installation Steps  
 
@@ -75,8 +77,14 @@ cd DevOps-Projects
 2️⃣ **Install dependencies**  
 
 ```sh
+# If you have nvm installed, use the project's Node.js version
+nvm use
+
+# Install dependencies
 npm install
 ```
+
+> **💡 Tip**: This project includes a `.nvmrc` file. If you have nvm installed, simply run `nvm use` to automatically switch to the correct Node.js version.
 
 3️⃣ **Start the development server**  
 

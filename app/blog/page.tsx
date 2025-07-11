@@ -26,7 +26,7 @@ export default function BlogPage() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="space-y-2 pb-8 pt-6 md:space-y-5">
+      <div className="space-y-2 pb-6 sm:pb-8 pt-4 sm:pt-6 md:space-y-5">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ export default function BlogPage() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
+            className="text-2xl sm:text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
           >
             All Projects
           </motion.h1>
@@ -58,7 +58,7 @@ export default function BlogPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-lg leading-7 text-gray-500 dark:text-gray-400"
+          className="text-base sm:text-lg leading-7 text-gray-500 dark:text-gray-400"
         >
           Discover our latest DevOps projects, tutorials, and technical guides
         </motion.p>
