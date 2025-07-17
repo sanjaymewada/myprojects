@@ -108,8 +108,8 @@ export default function ListLayout({
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pb-6 sm:pb-8 pt-4 sm:pt-6 md:space-y-5">
-          <h1 className="text-2xl sm:text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
+        <div className="space-y-2 pb-6 sm:pb-8 pt-4 sm:pt-6 md:space-y-3">
+          <h1 className="text-2xl sm:text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-4xl md:leading-[3rem]">
             {title}
           </h1>
           <div className="relative">
@@ -142,7 +142,7 @@ export default function ListLayout({
             </div>
           </div>
         </div>
-        <div className="space-y-8 sm:space-y-12 py-6 sm:py-12">
+        <div className="space-y-8 sm:space-y-12 py-6 sm:py-8">
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((post, index) => {
             const { path, date, title, summary, tags } = post
@@ -162,13 +162,13 @@ export default function ListLayout({
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-all duration-500"></div>
                   
                   {/* Main Card Content */}
-                  <div className="relative flex flex-col space-y-3 sm:space-y-4 rounded-xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl p-4 sm:p-6 border border-gray-200/20 dark:border-gray-700/20 overflow-hidden">
+                  <div className="relative flex flex-col space-y-3 sm:space-y-4 rounded-xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl p-4 sm:p-5 border border-gray-200/20 dark:border-gray-700/20 overflow-hidden">
                     {/* Decorative Elements */}
                     <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl transform group-hover:translate-x-10 transition-transform duration-700"></div>
                     <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-purple-500/10 to-blue-500/10 rounded-full blur-2xl transform group-hover:-translate-x-8 transition-transform duration-700"></div>
                     
                     {/* Content Grid */}
-                    <div className="relative grid grid-cols-1 md:grid-cols-[auto,1fr] gap-4 sm:gap-6">
+                    <div className="relative grid grid-cols-1 md:grid-cols-[auto,1fr] gap-4 sm:gap-5">
                       {/* Date Column */}
                       <div className="flex items-start">
                         <time 
@@ -198,7 +198,7 @@ export default function ListLayout({
                         </Link>
 
                         {/* Summary */}
-                        <p className="prose max-w-none text-gray-600 dark:text-gray-300 line-clamp-2 leading-relaxed">
+                        <p className="prose max-w-none text-gray-600 dark:text-gray-300 line-clamp-2 leading-relaxed text-sm md:text-[0.925rem] md:leading-[1.65]">
                           {summary}
                         </p>
 
@@ -220,9 +220,9 @@ export default function ListLayout({
                         </div>
 
                         {/* Read More Link */}
-                        <div className="pt-3 sm:pt-4">
+                        <div className="pt-2 sm:pt-3">
                           <div className="group/link inline-flex items-center space-x-2">
-                            <span className="relative text-base font-medium text-blue-500 dark:text-blue-400">
+                            <span className="relative text-sm md:text-[0.925rem] font-medium text-blue-500 dark:text-blue-400">
                               <span className="relative z-10 group-hover/link:text-transparent group-hover/link:bg-clip-text group-hover/link:bg-gradient-to-r group-hover/link:from-blue-600 group-hover/link:to-purple-600 dark:group-hover/link:from-blue-400 dark:group-hover/link:to-purple-400 transition-all duration-300">
                                 Read more
                                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 dark:from-blue-400 dark:to-purple-400 transform origin-left scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300"></span>
@@ -230,7 +230,7 @@ export default function ListLayout({
                             </span>
                             <motion.svg
                               xmlns="http://www.w3.org/2000/svg"
-                              className="h-5 w-5 text-blue-500 dark:text-blue-400"
+                              className="h-4 w-4 md:h-4 md:w-4 text-blue-500 dark:text-blue-400"
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
@@ -269,7 +269,7 @@ export default function ListLayout({
                       stiffness: 100,
                       damping: 20
                     }}
-                    className="w-full px-2 sm:px-4 mt-8 sm:mt-12"
+                    className="w-full px-2 sm:px-4 mt-6 sm:mt-8"
                   >
                     <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent"></div>
                   </motion.div>

@@ -25,19 +25,20 @@ export default function BlogPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
+      className="max-w-5xl mx-auto"
     >
-      <div className="space-y-2 pb-6 sm:pb-8 pt-4 sm:pt-6 md:space-y-5">
+      <div className="space-y-2 pb-4 sm:pb-6 pt-3 sm:pt-4 md:space-y-3">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center gap-4"
+          className="flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center gap-3"
         >
           <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-2xl sm:text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
+            className="text-2xl sm:text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-11"
           >
             All Projects
           </motion.h1>
@@ -48,8 +49,8 @@ export default function BlogPage() {
           >
             <Button variant="outline" size="sm" className="rounded-full hover:scale-105 transition-transform duration-200">
               <Link href="/feed.xml" className="flex items-center gap-2">
-                <FaRss className="h-4 w-4" />
-                <span>RSS Feed</span>
+                <FaRss className="h-3.5 w-3.5" />
+                <span className="text-sm">RSS Feed</span>
               </Link>
             </Button>
           </motion.div>
@@ -58,7 +59,7 @@ export default function BlogPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-base sm:text-lg leading-7 text-gray-500 dark:text-gray-400"
+          className="text-sm sm:text-base leading-6 text-gray-500 dark:text-gray-400 max-w-3xl"
         >
           Discover our latest DevOps projects, tutorials, and technical guides
         </motion.p>
@@ -69,12 +70,12 @@ export default function BlogPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.6 }}
       >
-    <ListLayout
-      posts={posts}
-      initialDisplayPosts={initialDisplayPosts}
-      pagination={pagination}
+        <ListLayout
+          posts={posts}
+          initialDisplayPosts={initialDisplayPosts}
+          pagination={pagination}
           title=""
-    />
+        />
       </motion.div>
     </motion.div>
   )
