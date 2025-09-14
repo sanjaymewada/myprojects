@@ -9,7 +9,7 @@ import { Button } from '@/components/components/ui/button'
 
 export default function Projects() {
   return (
-    <>
+    <div className="max-w-6xl mx-auto">
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="relative space-y-6 sm:space-y-8 pb-6 sm:pb-8 pt-4 sm:pt-6">
           {/* Decorative background elements */}
@@ -121,6 +121,6 @@ export default function Projects() {
         </div>
         <ProjectTabs />
       </motion.div>
-    </>
+    </div>
   )
 }

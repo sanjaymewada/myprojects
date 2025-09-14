@@ -53,7 +53,8 @@ export default function ProjectTabs() {
         variants={containerVariants}
         className="relative mb-4 sm:mb-6"
       >
-        <TabsList className="relative flex w-full justify-start gap-2 overflow-x-auto bg-transparent pb-2 scrollbar-hide dark:bg-transparent">
+        <div className="flex justify-center w-full">
+          <TabsList className="relative flex justify-center gap-4 bg-transparent pb-2 dark:bg-transparent inline-flex">
           {tabTypes.map((type, index) => (
             <motion.div
               key={type}
@@ -63,25 +64,14 @@ export default function ProjectTabs() {
             >
               <TabsTrigger
                 value={type}
-                className="relative rounded-full border border-neutral-200/50 bg-white/50 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-neutral-600 backdrop-blur-sm transition-all hover:bg-white/80 hover:text-neutral-900 data-[state=active]:border-blue-500/50 data-[state=active]:bg-blue-500/10 data-[state=active]:text-blue-600 dark:border-neutral-800/50 dark:bg-neutral-950/50 dark:text-neutral-400 dark:hover:bg-neutral-900/50 dark:hover:text-neutral-100 dark:data-[state=active]:border-blue-500/50 dark:data-[state=active]:bg-blue-500/10 dark:data-[state=active]:text-blue-400"
+                className="relative rounded-full border border-neutral-200/50 bg-white/50 px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base font-medium text-neutral-600 backdrop-blur-sm transition-all hover:bg-white/80 hover:text-neutral-900 data-[state=active]:border-blue-500/50 data-[state=active]:bg-blue-500/10 data-[state=active]:text-blue-600 dark:border-neutral-800/50 dark:bg-neutral-950/50 dark:text-neutral-400 dark:hover:bg-neutral-900/50 dark:hover:text-neutral-100 dark:data-[state=active]:border-blue-500/50 dark:data-[state=active]:bg-blue-500/10 dark:data-[state=active]:text-blue-400 min-w-[80px] sm:min-w-[100px]"
               >
                 {type.charAt(0).toUpperCase() + type.slice(1)}
-                <motion.span
-                  className="absolute bottom-0 left-0 h-[2px] w-full rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
-                  initial={{ scaleX: 0 }}
-                  animate={{
-                    scaleX: 1,
-                    transition: { duration: 0.3, delay: index * 0.1 }
-                  }}
-                />
               </TabsTrigger>
             </motion.div>
           ))}
         </TabsList>
-
-        {/* Gradient borders */}
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-neutral-300/50 to-transparent dark:via-neutral-700/50" />
-        <div className="pointer-events-none absolute bottom-[1px] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-neutral-300/30 to-transparent blur-[0.5px] dark:via-neutral-700/30" />
+        </div>
       </motion.div>
 
       {tabTypes.map((type) => (

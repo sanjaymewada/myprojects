@@ -24,10 +24,16 @@ interface Project {
 export default function ProjectAccordion({ project }: { project: Project }) {
   return (
     <Accordion type="single" collapsible className="w-full">
-      <AccordionItem value={project.slug} key={project.slug} className="group">
-        <AccordionPrimitive.Header className="flex">
-          <AccordionPrimitive.Trigger className="flex flex-1 items-start justify-between rounded-xl border border-neutral-200/50 bg-white/50 p-4 sm:p-6 text-left backdrop-blur-sm transition-all hover:bg-white/80 dark:border-neutral-800/50 dark:bg-neutral-950/50 dark:hover:bg-neutral-900/50">
-            <div className="flex flex-col space-y-3">
+      <AccordionItem value={project.slug} key={project.slug} className="group relative transform transition-all duration-500">
+        {/* Background Effects */}
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-all duration-500"></div>
+        <AccordionPrimitive.Header className="flex relative">
+          <AccordionPrimitive.Trigger className="relative flex flex-1 items-start justify-between rounded-xl border border-gray-200/20 dark:border-gray-700/20 bg-white/90 dark:bg-gray-900/90 p-4 sm:p-6 text-left backdrop-blur-xl transition-all hover:bg-white/95 dark:hover:bg-gray-900/95 shadow-sm hover:shadow-md overflow-hidden">
+            {/* Decorative Elements */}
+            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl transform group-hover:translate-x-10 transition-transform duration-700"></div>
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-purple-500/10 to-blue-500/10 rounded-full blur-2xl transform group-hover:-translate-x-8 transition-transform duration-700"></div>
+            
+            <div className="relative flex flex-col space-y-3">
               <motion.span 
                 className="relative inline-flex text-lg sm:text-xl font-semibold md:text-2xl"
                 initial={{ opacity: 0, x: -20 }}
@@ -83,11 +89,11 @@ export default function ProjectAccordion({ project }: { project: Project }) {
             </div>
             
             <div className="relative h-8 w-8">
-              <span className="absolute inset-0 rounded-full bg-neutral-100 transition-transform duration-300 group-hover:scale-110 dark:bg-neutral-800" />
+              <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/40 dark:to-purple-900/40 transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-blue-500/10 backdrop-blur-sm border border-blue-200/20 dark:border-blue-700/20" />
               <Plus
                 size={16}
                 strokeWidth={2}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-60 transition-all duration-300 group-hover:rotate-180 group-hover:opacity-100"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-blue-600 dark:text-blue-300 opacity-60 transition-all duration-300 group-hover:rotate-180 group-hover:opacity-100"
                 aria-hidden="true"
               />
             </div>
@@ -96,7 +102,7 @@ export default function ProjectAccordion({ project }: { project: Project }) {
         
         <AccordionContent className="overflow-hidden">
           <motion.div 
-            className="rounded-xl border border-neutral-200/50 bg-white/50 p-4 sm:p-6 backdrop-blur-sm dark:border-neutral-800/50 dark:bg-neutral-950/50"
+            className="relative rounded-xl border border-gray-200/20 dark:border-gray-700/20 bg-white/90 dark:bg-gray-900/90 p-4 sm:p-6 backdrop-blur-xl shadow-sm"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
