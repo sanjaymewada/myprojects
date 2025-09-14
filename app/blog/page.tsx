@@ -25,7 +25,7 @@ export default function BlogPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="max-w-5xl mx-auto"
+      className="max-w-6xl mx-auto"
     >
       <div className="space-y-2 pb-4 sm:pb-6 pt-3 sm:pt-4 md:space-y-3">
         <motion.div
