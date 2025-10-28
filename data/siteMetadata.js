@@ -1,7 +1,7 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: 'DevOps & Cloud Projects Showcase',
-  author: 'ProDevOpsguy',
+  author: 'Sanjay Mewada',
   headerTitle: 'Realtime DevOps Projects Showcase',
   description: 'A curated collection of real-time DevOps and Cloud projects, ranging from beginner to advanced levels. Built using Next.js and styled with Tailwind CSS, this showcase leverages modern web technologies to provide a fast, responsive, and interactive experience.',
   language: 'en-us',
@@ -11,12 +11,12 @@ const siteMetadata = {
   CVUrl: 'https://t.me/prodevopsguy',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/ogimage.png`,
-  email: 'prodevopsguytech@gmail.com',
-  github: 'https://github.com/NotHarshhaa',
+  email: 'sanjaymewada786@gmail.com@gmail.com',
+  github: 'https://github.com/sanjaymewada',
   // x: 'https://twitter.com/x',
   // twitter: 'https://twitter.com/Twitter',
-  linkedin: 'https://www.linkedin.com/in/harshhaa-vardhan-reddy',
-  instagram: 'https://www.instagram.com/prodevopsguy',
+  linkedin: 'https://www.linkedin.com/in/sanjaymewada-',
+  instagram: 'https://www.instagram.com/',
   medium: 'https://dev.to/@notharshhaa',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
