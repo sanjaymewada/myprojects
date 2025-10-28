@@ -8,6 +8,7 @@
     "publishedAt": "2024-01-10",
     "type": "personal"
   },
+  /*
   {
     "slug": "tf-ecr-ecs-gh-deploy",
     "name": "Terraform ECR ECS GitHub Deploy",
@@ -143,4 +144,5 @@
     "publishedAt": "2024-04-01",
     "type": "personal"
   }
+*/
 ]
